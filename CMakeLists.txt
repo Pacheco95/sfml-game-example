@@ -5,7 +5,7 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 add_executable(${PROJECT_NAME}
-        src/main.cpp
+        main.cpp
         src/utils.cpp
         src/GameObject.cpp
         src/Window.cpp
