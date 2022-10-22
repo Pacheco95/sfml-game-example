@@ -26,7 +26,7 @@ int oldmain() {
 
     // SFML
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML works!");
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(FRAME_RATE_LIMIT);
 
 
     GameObject g(fixture);

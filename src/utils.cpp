@@ -8,7 +8,7 @@ void configureLogger() {
     plog::init(plog::debug, &appender);
 }
 
-b2Vec2 world2screen(const b2Vec2 &world) {
+b2Vec2 worldToScreen(const b2Vec2 &world) {
     return {world.x * SCALING_FACTOR + X_OFFSET, -world.y * SCALING_FACTOR + Y_OFFSET};
 }
 

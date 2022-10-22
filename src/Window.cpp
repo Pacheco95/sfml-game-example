@@ -8,7 +8,7 @@ Window::Window() {
     m_Window.setFramerateLimit(FRAME_RATE_LIMIT);
 }
 
-void Window::open(GameLoopCallback &gameLoopCallback, EventHandlerCallback &eventHandlerCallback) {
+void Window::openAndBlockUntilClosed(GameLoopCallback &gameLoopCallback, EventHandlerCallback &eventHandlerCallback) {
     sf::Clock clock;
 
     while (m_Window.isOpen()) {
@@ -23,11 +23,6 @@ void Window::open(GameLoopCallback &gameLoopCallback, EventHandlerCallback &even
     }
 }
 
-void Window::renderObjects(const std::vector<GameObject *> &gameObjects) {
-    m_Window.clear();
-    m_Window.display();
-}
-
-void Window::close() {
-    m_Window.close();
+sf::RenderWindow &Window::asSFMLWindow() {
+    return m_Window;
 }

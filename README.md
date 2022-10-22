@@ -15,7 +15,7 @@ All you need to do is to clone the repository
 git clone git@github.com:Pacheco95/conan-project-example.git
 ```
 
-and open it in CLion and let it sync the CMake project.
+and openAndBlockUntilClosed it in CLion and let it sync the CMake project.
 
 ```shell
 clion conan-project-example

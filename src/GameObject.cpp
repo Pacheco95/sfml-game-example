@@ -21,7 +21,7 @@ void GameObject::updatePhysics() {
     for (auto i = 0; i < m_b2shape->m_count; i++) {
         auto localPoint = m_b2shape->m_vertices[i];
         auto worldPoint = m_body->GetWorldPoint(localPoint);
-        auto screenPoint = world2screen(worldPoint);
+        auto screenPoint = worldToScreen(worldPoint);
         m_sfmlShape->setPoint(i, sf::Vector2f(screenPoint.x, screenPoint.y));
     }
 
