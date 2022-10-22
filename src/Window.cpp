@@ -23,7 +23,7 @@ void Window::open(const std::function<void(float)> &gameLoopCallback) {
         }
 
         sf::Time deltaTime = clock.restart();
-        gameLoopCallback(clock.restart().asSeconds());
+        gameLoopCallback(deltaTime.asSeconds());
 
         m_Window.clear();
         m_Window.display();
