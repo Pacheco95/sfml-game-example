@@ -3,20 +3,15 @@
 #include <SFML/Graphics.hpp>
 #include <box2d/box2d.h>
 #include <iostream>
+#include "Settings.h"
 
-constexpr auto ANTIALIASING_LEVEL = 5u;
-constexpr auto WINDOW_WIDTH = 800u;
-constexpr auto WINDOW_HEIGHT = 800u;
-constexpr auto X_OFFSET = WINDOW_WIDTH * 0.5f;
-constexpr auto Y_OFFSET = WINDOW_HEIGHT * 0.5f;
-constexpr auto SCALING_FACTOR = 100.f;
-constexpr auto FRAME_RATE_LIMIT = 60u;
-constexpr auto GRAVITY_VERTICAL_FORCE = -1.f;
-constexpr auto VELOCITY_ITERATIONS = 8u;
-constexpr auto POSITION_ITERATIONS = 3u;
-constexpr auto RESERVED_GAME_OBJECTS = 1000u;
+#define getSettings loadSettings
+
+constexpr char SETTINGS_FILE_PATH_ENV_NAME[] = "SETTINGS_FILE_PATH";
 
 void configureLogger();
+
+Settings &loadSettings();
 
 b2Vec2 worldToScreen(const b2Vec2 &world);
 

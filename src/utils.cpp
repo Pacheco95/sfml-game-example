@@ -5,13 +5,28 @@
 
 #include "utils.h"
 
+Settings &loadSettings() {
+    static bool firstLoad = true;
+    static auto settings = Settings::load();
+
+    if (firstLoad) {
+        LOGI << "Using settings:\n" << settings.serialize();
+        firstLoad = false;
+    }
+
+    return settings;
+}
+
 void configureLogger() {
     static plog::ColorConsoleAppender<plog::TxtFormatter> appender;
     plog::init(plog::debug, &appender);
 }
 
 b2Vec2 worldToScreen(const b2Vec2 &world) {
-    return {world.x * SCALING_FACTOR + X_OFFSET, -world.y * SCALING_FACTOR + Y_OFFSET};
+    const auto &settings = getSettings();
+    const auto &offset = Settings::getScreenOffset();
+    const auto &factor = settings.m_scalingFactor;
+    return {world.x * factor + offset.x, -world.y * factor + offset.y};
 }
 
 std::ostream &operator<<(std::ostream &os, const b2Vec2 &v) {

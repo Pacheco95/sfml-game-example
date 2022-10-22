@@ -1,8 +1,10 @@
 #include "World.h"
 #include "utils.h"
 
-World::World() : m_b2World(b2Vec2(0.f, GRAVITY_VERTICAL_FORCE)) {
-    m_gameObjects.reserve(RESERVED_GAME_OBJECTS);
+World::World() : m_b2World(b2Vec2_zero) {
+    const auto &settings = getSettings();
+    m_b2World.SetGravity(b2Vec2(0.f, settings.m_gravity));
+    m_gameObjects.reserve(settings.m_reservedGameObjects);
 }
 
 std::vector<GameObject *> &World::getGameObjects() {
@@ -10,7 +12,10 @@ std::vector<GameObject *> &World::getGameObjects() {
 }
 
 void World::updatePhysics(float deltaTimeInSeconds) {
-    m_b2World.Step(deltaTimeInSeconds, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+    const auto &settings = getSettings();
+    auto velocityIterations = static_cast<int>(settings.m_velocityIterations);
+    auto positionIterations = static_cast<int>(settings.m_positionIterations);
+    m_b2World.Step(deltaTimeInSeconds, velocityIterations, positionIterations);
 }
 
 b2Body *World::CreateBody(b2BodyDef &bodyDef) {

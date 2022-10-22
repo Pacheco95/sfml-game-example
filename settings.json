@@ -1,0 +1,9 @@
+{
+  "m_antialiasingLevel": 3,
+  "m_frameRateLimit": 60,
+  "m_scalingFactor": 100,
+  "m_gravity": -10,
+  "m_velocityIterations": 8,
+  "m_positionIterations": 3,
+  "m_reservedGameObjects": 1000
+}

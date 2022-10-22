@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0)
 project(bouncing_ball)
 
+set(CMAKE_CXX_STANDARD 20)
+
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
@@ -10,6 +12,7 @@ add_executable(${PROJECT_NAME}
         src/GameObject.cpp
         src/Window.cpp
         src/World.cpp
-        src/Game.cpp)
+        src/Game.cpp
+        src/Settings.cpp)
 
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})

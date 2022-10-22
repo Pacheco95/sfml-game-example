@@ -1,14 +1,13 @@
-#include <plog/Log.h>
 #include "Window.h"
 #include "utils.h"
 
 Window::Window() {
     auto title = "Bouncing Ball";
-
-    sf::ContextSettings contextSettings(0, 0, ANTIALIASING_LEVEL);
-    sf::VideoMode videoMode = sf::VideoMode::getFullscreenModes().front();
+    const auto settings = getSettings();
+    const auto &videoMode = Settings::getVideoMode();
+    const auto &contextSettings = settings.getContextSettings();
     m_Window.create(videoMode, title, sf::Style::Default, contextSettings);
-    m_Window.setFramerateLimit(FRAME_RATE_LIMIT);
+    m_Window.setFramerateLimit(settings.m_frameRateLimit);
 }
 
 void Window::openAndBlockUntilClosed(GameLoopCallback &gameLoopCallback, EventHandlerCallback &eventHandlerCallback) {

@@ -2,6 +2,7 @@
 
 int main() {
     configureLogger();
+    loadSettings();
 
     Game game;
     game.start();

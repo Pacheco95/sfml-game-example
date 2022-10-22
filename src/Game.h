@@ -14,4 +14,12 @@ public:
 private:
     World m_world;
     Window m_window;
+
+    void shutdown();
+
+    void checkUserInput();
+
+    void renderFrame();
+
+    void handleEvent(const sf::Event &event);
 };

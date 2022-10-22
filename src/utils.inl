@@ -1,7 +1,15 @@
+#include "Settings.h"
+
 template<typename T>
 b2Vec2 screenToWorld(const sf::Vector2<T> &screen) {
-    auto x = (screen.x - X_OFFSET) / SCALING_FACTOR;
-    auto y = -(screen.y - Y_OFFSET) / SCALING_FACTOR;
+    const auto &settings = Settings::load();
+
+    const auto &offset = settings.getScreenOffset();
+    const auto &factor = settings.m_scalingFactor;
+
+    auto x = (screen.x - offset.x) / factor;
+    auto y = -(screen.y - offset.y) / factor;
+
     return {x, y};
 }
 
