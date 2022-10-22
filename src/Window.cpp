@@ -1,10 +1,13 @@
+#include <plog/Log.h>
 #include "Window.h"
 #include "utils.h"
 
 Window::Window() {
     auto title = "Bouncing Ball";
-    auto videoMode = sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT);
-    m_Window.create(videoMode, title);
+
+    sf::ContextSettings contextSettings(0, 0, ANTIALIASING_LEVEL);
+    sf::VideoMode videoMode = sf::VideoMode::getFullscreenModes().front();
+    m_Window.create(videoMode, title, sf::Style::Default, contextSettings);
     m_Window.setFramerateLimit(FRAME_RATE_LIMIT);
 }
 

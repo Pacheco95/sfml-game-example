@@ -3,8 +3,6 @@
 Game::Game() : m_window() {};
 
 void Game::start() {
-    configureLogger();
-
     static const auto handleGameLoopIteration = [this](float deltaTimeInSeconds) {
         m_world.updatePhysics(deltaTimeInSeconds);
 
@@ -31,7 +29,7 @@ void Game::start() {
             auto fixture = body->CreateFixture(&fixtureDef);
 
             auto square = new GameObject(fixture);
-            square->setFillColor(sf::Color::Red);
+            square->setFillColor(getRandomColor());
 
             m_world.addGameObject(square);
         }
