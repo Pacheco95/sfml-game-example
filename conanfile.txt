@@ -1,0 +1,7 @@
+[requires]
+plog/1.1.5
+box2d/2.4.1
+sfml/2.5.1
+
+[generators]
+cmake
