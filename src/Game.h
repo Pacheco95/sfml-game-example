@@ -14,8 +14,4 @@ public:
 private:
     World m_world;
     Window m_window;
-
-    void tick(float deltaTimeInSeconds) {
-        LOGD << deltaTimeInSeconds;
-    }
 };

@@ -11,6 +11,8 @@ constexpr auto Y_OFFSET = WINDOW_HEIGHT * 0.5f;
 constexpr auto SCALING_FACTOR = 100.f;
 constexpr auto FRAME_RATE_LIMIT = 60u;
 constexpr auto GRAVITY_VERTICAL_FORCE = -10.f;
+constexpr auto VELOCITY_ITERATIONS = 8u;
+constexpr auto POSITION_ITERATIONS = 3u;
 
 void configureLogger();
 

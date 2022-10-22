@@ -8,24 +8,26 @@ Window::Window() {
     m_Window.setFramerateLimit(FRAME_RATE_LIMIT);
 }
 
-void Window::open(const std::function<void(float)> &gameLoopCallback) {
+void Window::open(GameLoopCallback &gameLoopCallback, EventHandlerCallback &eventHandlerCallback) {
     sf::Clock clock;
 
     while (m_Window.isOpen()) {
         sf::Event event{};
 
         while (m_Window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                m_Window.close();
-
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-                m_Window.close();
+            eventHandlerCallback(event);
         }
 
         sf::Time deltaTime = clock.restart();
         gameLoopCallback(deltaTime.asSeconds());
-
-        m_Window.clear();
-        m_Window.display();
     }
+}
+
+void Window::renderObjects(const std::vector<GameObject *> &gameObjects) {
+    m_Window.clear();
+    m_Window.display();
+}
+
+void Window::close() {
+    m_Window.close();
 }
