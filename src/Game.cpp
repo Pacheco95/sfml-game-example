@@ -78,5 +78,5 @@ void Game::shutdown() {
         delete gameObject;
     }
 
-    LOGD << " GameObjects instanciados: " << m_world.getGameObjects().size();
+    LOGD << "Instantiated game objects: " << m_world.getGameObjects().size();
 }
