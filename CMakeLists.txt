@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(bouncing_ball)
+project(example)
 
 set(CMAKE_CXX_STANDARD 20)
 

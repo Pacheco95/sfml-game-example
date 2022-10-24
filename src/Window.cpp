@@ -2,7 +2,7 @@
 #include "utils.h"
 
 Window::Window() {
-    auto title = "Bouncing Ball";
+    auto title = "SFML Demo";
     const auto settings = getSettings();
     const auto &videoMode = Settings::getVideoMode();
     const auto &contextSettings = settings.getContextSettings();

@@ -19,13 +19,13 @@ pip install conan
 All you need to do is to clone the repository
 
 ```shell
-git clone git@github.com:Pacheco95/conan-project-example.git
+git clone git@github.com:Pacheco95/sfml-game-example.git
 ```
 
 and open it in CLion and let it sync the CMake project.
 
 ```shell
-clion conan-project-example
+clion sfml-game-example
 ```
 
 It will generate directories like `cmake-build-*` based on the preconfigured build profiles.
@@ -34,20 +34,21 @@ It will also autogenerate the Debug/Run profiles for you. Just hit the `Run` but
 ## Without IDE
 
 ```shell
-git clone git@github.com:Pacheco95/conan-project-example.git
-cd conan-project-example
+git clone git@github.com:Pacheco95/sfml-game-example.git
+cd sfml-game-example
 mkdir build
 cd build
 cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
 make # build app and tests at the bin directory
+./bin/example
 ```
 
 # Running tests in docker
 
 ```shell
-cd conan-project-example
-docker build -t bouncing_ball .
-docker run --rm bouncing_ball:latest
+cd sfml-game-example
+docker build -t example .
+docker run --rm example:latest
 ```
 
 # Notes
