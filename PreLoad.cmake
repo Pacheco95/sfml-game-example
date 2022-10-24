@@ -5,8 +5,8 @@ configure_file(
         ${CMAKE_BINARY_DIR}/${CONAN_PROFILE}
 )
 
-#execute_process(
-#        COMMAND conan install .. --profile=${CONAN_PROFILE}
-#)
+execute_process(
+        COMMAND conan install .. --profile=${CONAN_PROFILE}
+)
 
 set(CMAKE_GENERATOR "Unix Makefiles" CACHE INTERNAL "" FORCE)
