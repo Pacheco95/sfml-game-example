@@ -5,7 +5,7 @@
 
 TEST_SUITE_BEGIN("Settings");
 
-const char CONFIG[] = R"(
+constexpr char CONFIG[] = R"(
 {
   "m_antialiasingLevel": 3,
   "m_frameRateLimit": 60,
@@ -17,10 +17,27 @@ const char CONFIG[] = R"(
 }
 )";
 
-TEST_CASE("Loading") {
-    const std::string tempConfigFile = std::tmpnam(nullptr);
-    std::ofstream os(tempConfigFile);
-    os << CONFIG << std::endl;
+struct Fixture {
+    std::string tempConfigFile;
+    std::ofstream os;
+
+    Fixture() : tempConfigFile(std::tmpnam(nullptr)), os(tempConfigFile) {
+        os << CONFIG << std::endl;
+    }
+
+    ~Fixture() {
+        os.close();
+        std::remove(tempConfigFile.c_str());
+    }
+};
+
+
+std::string &strip(std::string &str) {
+    str.erase(remove_if(str.begin(), str.end(), isspace), str.end());
+    return str;
+}
+
+TEST_CASE_FIXTURE(Fixture, "Loading") {
 
     SUBCASE("it should load default settings without making copies") {
         auto &settings = Settings::load();
@@ -32,8 +49,16 @@ TEST_CASE("Loading") {
         CHECK((settings.m_reservedGameObjects == 123));
     }
 
-    os.close();
-    std::remove(tempConfigFile.c_str());
+}
+
+TEST_CASE_FIXTURE(Fixture, "Serializing") {
+
+    SUBCASE("it should serialize configuration") {
+        auto serialized = Settings::load(tempConfigFile).serialize();
+        auto expected = std::string(CONFIG);
+        CHECK((strip(serialized) == strip(expected)));
+    }
+
 }
 
 TEST_SUITE_END();
