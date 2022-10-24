@@ -18,6 +18,8 @@ struct Settings {
 
     static Settings defaults;
 
+    bool operator==(const Settings &other) const;
+
     [[nodiscard]] std::string serialize() const;
 
     uint m_antialiasingLevel;

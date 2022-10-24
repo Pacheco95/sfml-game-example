@@ -72,3 +72,15 @@ const sf::ContextSettings &Settings::getContextSettings() const {
     static const sf::ContextSettings contextSettings(0, 0, this->m_antialiasingLevel);
     return contextSettings;
 }
+
+bool Settings::operator==(const Settings &other) const {
+    return (
+            m_antialiasingLevel == other.m_antialiasingLevel &&
+            m_frameRateLimit == other.m_frameRateLimit &&
+            m_scalingFactor == other.m_scalingFactor &&
+            m_gravity == other.m_gravity &&
+            m_velocityIterations == other.m_velocityIterations &&
+            m_positionIterations == other.m_positionIterations &&
+            m_reservedGameObjects == other.m_reservedGameObjects
+    );
+}
